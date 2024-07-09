@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
 import { AuthModalType } from './auth-modal';
-import { ModalBody, ModalHeader } from '@nextui-org/react';
+import { Button, ModalBody, ModalFooter, ModalHeader } from '@nextui-org/react';
 import { classNamePointerUnderline } from '@/common/constant';
 
-export const LoginModal = ({
-  setFormModalType,
-}: {
+type propType = {
   setFormModalType: React.Dispatch<React.SetStateAction<AuthModalType>>;
-}) => {
+  onClose: () => void;
+};
+
+export const LoginModal = ({ setFormModalType, onClose }: propType) => {
   return (
     <div>
       <ModalHeader className='flex flex-col gap-1'>Login</ModalHeader>
@@ -30,6 +31,14 @@ export const LoginModal = ({
           Chưa có tài khoản? Đăng ký ngay
         </div>
       </ModalBody>
+      <ModalFooter>
+        <Button color='danger' variant='light' onPress={onClose}>
+          Close
+        </Button>
+        <Button color='primary' onPress={onClose}>
+          Action
+        </Button>
+      </ModalFooter>
     </div>
   );
 };

@@ -26,18 +26,10 @@ export const AuthModal = ({ isOpenAuthModal }: { isOpenAuthModal: boolean }) => 
           {(onClose) => (
             <>
               {formModalType === AuthModalType.LOGIN ? (
-                <LoginModal setFormModalType={setFormModalType} />
+                <LoginModal setFormModalType={setFormModalType} onClose={onClose} />
               ) : (
-                <SignupModal setFormModalType={setFormModalType} />
+                <SignupModal setFormModalType={setFormModalType} onClose={onClose}/>
               )}
-              <ModalFooter>
-                <Button color='danger' variant='light' onPress={onClose}>
-                  Close
-                </Button>
-                <Button color='primary' onPress={onClose}>
-                  Action
-                </Button>
-              </ModalFooter>
             </>
           )}
         </ModalContent>
