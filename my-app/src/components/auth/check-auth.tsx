@@ -1,16 +1,19 @@
 'use client';
 import { AuthStateType, clearAuth, updateInfo } from '@/redux/features/auth-reducer';
+import { RootState } from '@/redux/store';
 import { authService } from '@/services/auth';
-import React, { Fragment, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const CheckAuth = () => {
+  const [token, setToken] = useState(null);
+  const authState = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
-
-  const accessToken = localStorage.getItem('accessToken');
+  console.log(authState.isLogin);
 
   useEffect(() => {
     const checkAuth = async () => {
+      const accessToken = localStorage.getItem('accessToken');
       if (accessToken) {
         const res = await authService.getMe(accessToken);
         dispatch(updateInfo({ userInfo: res, isLogin: true } as AuthStateType));
@@ -19,6 +22,6 @@ export const CheckAuth = () => {
       }
     };
     checkAuth();
-  }, [accessToken]);
+  }, [token, authState.isLogin]);
   return <Fragment />;
 };

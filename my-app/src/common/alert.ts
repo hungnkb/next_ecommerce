@@ -1,8 +1,16 @@
 import { Bounce, toast, ToastOptions } from 'react-toastify';
 
-export const alertToast = (type: 'success' | 'warn' | 'error', message?: string) => {
+export const alertToast = ({
+  type,
+  message,
+  position = 'top-right',
+}: {
+  type: 'success' | 'warn' | 'error';
+  message?: string;
+  position?: 'top-right' | 'bottom-left';
+}) => {
   const options = {
-    position: 'top-right',
+    position,
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,

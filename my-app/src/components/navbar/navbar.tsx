@@ -73,7 +73,7 @@ export const NavbarComponent = () => {
         </NavbarContent>
         <NavbarContent justify='end'>
           <NavbarItem>
-            {authState.isLogin ? (
+            {authState.userInfo?.id ? (
               <AccountControl userInfo={authState.userInfo} />
             ) : (
               <Button onPress={() => setOpenAuthModal(!isOpenAuthModal)} color='primary' href='#' variant='flat'>

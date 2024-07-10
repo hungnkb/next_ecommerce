@@ -1,5 +1,6 @@
 import { alertToast } from '@/common/alert';
 import { AxiosInstance } from './axios-instance';
+import { MessageEnum } from '@/common/message';
 
 class AuthService {
   private registerUrl: string;
@@ -15,7 +16,7 @@ class AuthService {
       validateStatus: (status: number) => status < 500,
     });
     if (res?.data?.data) return res.data.data;
-    alertToast('error', res.data.message);
+    alertToast({ type: 'error', message: res.data.message });
     return null;
   }
 
@@ -24,10 +25,10 @@ class AuthService {
       validateStatus: (status: number) => status < 500,
     });
     if (res?.data?.data) {
-      alertToast('success', 'Đăng nhập thành công');
+      alertToast({ type: 'success', message: MessageEnum.SUCCESS });
       return res.data.data;
     }
-    alertToast('error', res.data.message);
+    alertToast({ type: 'error', message: res.data.message });
     return null;
   }
 

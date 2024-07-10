@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 export type AuthStateType = {
-  userInfo: UserInfoType;
-  isLogin: boolean;
+  userInfo?: UserInfoType;
+  isLogin?: boolean;
 };
 
 const initialState: AuthStateType = {

@@ -9,6 +9,8 @@ import { EyeSlashFilledIcon } from '../icons/eye-slash-filled-icon';
 import { EyeFilledIcon } from '../icons/eye-filled-icon';
 import { authService } from '@/services/auth';
 import { LoginResponseType } from '@/common/type-response';
+import { useDispatch } from 'react-redux';
+import { updateInfo } from '@/redux/features/auth-reducer';
 
 type propType = {
   setFormModalType: React.Dispatch<React.SetStateAction<AuthModalType>>;
@@ -24,6 +26,7 @@ export const LoginModal = ({ setFormModalType, onClose }: propType) => {
   const [keyInvalid, setKeyInvalid] = useState([] as string[]);
   const [isFetch, setIsFetch] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const dispatch = useDispatch();
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
@@ -42,6 +45,7 @@ export const LoginModal = ({ setFormModalType, onClose }: propType) => {
     setIsFetch(false);
     if (res) {
       localStorage.setItem('accessToken', res.accessToken);
+      dispatch(updateInfo({ isLogin: true }));
       onClose();
     }
   };
