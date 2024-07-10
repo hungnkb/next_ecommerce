@@ -1,5 +1,7 @@
 import Layout from '@/components/layout';
 import './globals.css';
+import { Providers } from '@/components/providers';
+import { CheckAuth } from '@/components/auth/check-auth';
 
 export const metadata = {
   title: 'Ecommerce',
@@ -8,13 +10,16 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
-      <body>
-        <div className='absolute left-1/2 transform -translate-x-1/2 max-w-full min-w-full'>
-          <Layout />
-          <div className='px-6'>{children}</div>
-        </div>
-      </body>
-    </html>
+    <Providers>
+      <html>
+        <body>
+          <div className='absolute left-1/2 transform -translate-x-1/2 max-w-full min-w-full'>
+            <CheckAuth />
+            <Layout />
+            <div className='px-6'>{children}</div>
+          </div>
+        </body>
+      </html>
+    </Providers>
   );
 }
