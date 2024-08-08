@@ -4,6 +4,7 @@ import { CardDetailType, CardDetail } from './card-detail';
 import { Skeleton } from '@nextui-org/skeleton';
 import { Card } from '@nextui-org/react';
 import { ProductService } from '@/services/product';
+import axios from 'axios';
 
 const skeletonList = Array(25).fill(0);
 
@@ -12,12 +13,12 @@ const CardList = () => {
   useEffect(() => {
     if (!list?.length) {
       const fetch = async () => {
-        const productService = new ProductService();
-        const res = await productService.getList();
-        if (res?.length) {
-          console.log(222, res);
-
-          setList(res);
+        // const productService = new ProductService();
+        const res = await axios.get('/api/products');
+        if (res) {
+          console.log(333,res);
+          
+          // setList(res);
         }
       };
       fetch();

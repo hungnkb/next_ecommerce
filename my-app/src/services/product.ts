@@ -16,8 +16,6 @@ export class ProductService {
       },
       validateStatus: (status: number) => status < 500,
     });
-    console.log(111, res);
-
-    if (res?.data) return res.data.data;
+    if (res?.data) return res.data.data || [];
   }
 }
