@@ -32,9 +32,9 @@ class AuthService {
     return null;
   }
 
-  async getMe(token: string) {
-    const res = await AxiosInstance.getInstance(token).get(this.getMeUrl);
-    if (res?.data?.data) return res.data.data;
+  async getMe(token: string, prefix = 'Bearer ') {
+    const res = await AxiosInstance.getInstance(undefined, prefix + token).get(this.getMeUrl);
+    if (res?.data?.data) return res.data.data;  
     return null;
   }
 }

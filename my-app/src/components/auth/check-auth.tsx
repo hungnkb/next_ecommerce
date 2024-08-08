@@ -9,7 +9,6 @@ export const CheckAuth = () => {
   const [token, setToken] = useState(null);
   const authState = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
-  console.log(authState.isLogin);
 
   useEffect(() => {
     const checkAuth = async () => {

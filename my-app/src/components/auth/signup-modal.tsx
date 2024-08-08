@@ -12,6 +12,7 @@ import { Spinner } from '@nextui-org/react';
 export type FormSignupType = {
   username: string;
   password: string;
+  isShop: boolean;
 };
 
 type propType = {
@@ -37,12 +38,13 @@ export const SignupModal = ({ setFormModalType, onClose }: propType) => {
 
   const onSubmit: SubmitHandler<FormSignupType> = async (data) => {
     setIsFetch(true);
+    data.isShop = true;
     const res = await authService.register(data);
     setIsFetch(false);
     if (res) {
       onClose();
     }
-  };
+  };    
 
   useEffect(() => {
     const listInvalid = Object.keys(errors);

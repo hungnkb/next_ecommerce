@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { CardDetailType, CardDetail } from './card-detail';
 import { Skeleton } from '@nextui-org/skeleton';
 import { Card } from '@nextui-org/react';
+import { ProductService } from '@/services/product';
 
 const skeletonList = Array(25).fill(0);
 
@@ -10,12 +11,16 @@ const CardList = () => {
   const [list, setList] = useState([] as CardDetailType[]);
   useEffect(() => {
     if (!list?.length) {
-      // setList([
-      //   { title: 'Sản phẩm test 1', price: 123456 },
-      //   { title: 'Sản phẩm test 2', price: 678345 },
-      //   { title: 'Sản phẩm test 1', price: 123456 },
-      //   { title: 'Sản phẩm test 2', price: 678345 },
-      // ]);
+      const fetch = async () => {
+        const productService = new ProductService();
+        const res = await productService.getList();
+        if (res?.length) {
+          console.log(222, res);
+
+          setList(res);
+        }
+      };
+      fetch();
     }
   }, []);
 
