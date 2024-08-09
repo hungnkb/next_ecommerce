@@ -1,11 +1,12 @@
 'use client';
 import React, { Fragment, useEffect, useState } from 'react';
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from '@nextui-org/react';
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Input, Button } from '@nextui-org/react';
 import { AuthModal } from '../auth/auth-modal';
 import { useSelector } from 'react-redux';
 import { UserInfoType } from '@/common/type-response';
 import { RootState } from '@/redux/store';
 import { AccountControl } from './account-control';
+import { SearchIcon } from './search-input';
 
 export enum menuTypeEnum {
   TEXT = 'text',
@@ -58,8 +59,8 @@ export const NavbarComponent = () => {
         <NavbarBrand>
           <p className='font-bold text-inherit'>Logo</p>
         </NavbarBrand>
-        <NavbarContent className='flex gap-4' justify='center'>
-          {menuList.map((item) => {
+        <NavbarContent className='flex gap-4 max-w-full' justify='center'>
+          {/* {menuList.map((item) => {
             if (item.type === menuTypeEnum.TEXT) {
               return (
                 <NavbarItem key={item.key} isActive={isActive === item.key}>
@@ -69,7 +70,20 @@ export const NavbarComponent = () => {
                 </NavbarItem>
               );
             }
-          })}
+          })} */}
+          <Input
+            classNames={{
+              base: 'max-w-full sm:max-w-[10rem] h-10',
+              mainWrapper: 'h-full',
+              input: 'text-small',
+              inputWrapper: 'h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20 w-1436',
+            }}
+            placeholder='Type to search...'
+            size='sm'
+            startContent={<SearchIcon size={18} />}
+            type='search'
+            fullWidth={true}
+          />
         </NavbarContent>
         <NavbarContent justify='end'>
           <NavbarItem>

@@ -15,10 +15,8 @@ const CardList = () => {
       const fetch = async () => {
         // const productService = new ProductService();
         const res = await axios.get('/api/products');
-        if (res) {
-          console.log(333,res);
-          
-          // setList(res);
+        if (res?.data?.length) {
+          setList(res.data);
         }
       };
       fetch();
@@ -27,7 +25,7 @@ const CardList = () => {
 
   return (
     <>
-      <div className='flex flex-row gap-2 flex-wrap justify-between'>
+      <div className='grid grid-cols-4 gap-4 max-xs:grid-cols-1'>
         {list?.length
           ? list.map((item, index) => {
               return <CardDetail key={index} props={item} />;

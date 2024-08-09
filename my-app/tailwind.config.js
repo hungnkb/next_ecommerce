@@ -13,6 +13,15 @@ module.exports = {
       maxWidth: {
         1536: '1536px',
       },
+      width: {
+        1436: '1436px',
+      },
+      screens: {
+        xs: '400px',
+      },
+      colors: {
+        price: '#fe434a',
+      },
     },
   },
   darkMode: 'class',
