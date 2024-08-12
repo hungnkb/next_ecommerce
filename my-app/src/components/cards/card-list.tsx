@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { CardDetailType, CardDetail } from './card-detail';
 import { Skeleton } from '@nextui-org/skeleton';
 import { Card } from '@nextui-org/react';
-import { ProductService } from '@/services/product';
+import { ProductService } from '@/services/products';
 import axios from 'axios';
 
 const skeletonList = Array(25).fill(0);

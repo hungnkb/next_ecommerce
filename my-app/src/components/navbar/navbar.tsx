@@ -46,13 +46,6 @@ export const NavbarComponent = () => {
     }
   });
 
-  // useEffect(() => {
-  //   if (authState.isLogin) {
-
-  //   } else {
-  //   }
-  // }, [authState.isLogin]);
-
   return (
     <Fragment>
       <Navbar maxWidth='2xl'>
@@ -73,10 +66,10 @@ export const NavbarComponent = () => {
           })} */}
           <Input
             classNames={{
-              base: 'max-w-full sm:max-w-[10rem] h-10',
+              base: 'max-w-full sm:max-w-[10rem] h-10 items-center',
               mainWrapper: 'h-full',
               input: 'text-small',
-              inputWrapper: 'h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20 w-1436',
+              inputWrapper: 'h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20 w-800',
             }}
             placeholder='Type to search...'
             size='sm'
@@ -90,7 +83,17 @@ export const NavbarComponent = () => {
             {authState.userInfo?.id ? (
               <AccountControl userInfo={authState.userInfo} />
             ) : (
-              <Button onPress={() => setOpenAuthModal(!isOpenAuthModal)} color='primary' href='#' variant='flat'>
+              <Button
+                onPress={() => setOpenAuthModal(!isOpenAuthModal)}
+                href='#'
+                variant='light'
+                className='text-slate-500'
+              >
+                <img
+                  src='https://salt.tikicdn.com/ts/upload/07/d5/94/d7b6a3bd7d57d37ef6e437aa0de4821b.png'
+                  alt=''
+                  className='w-5'
+                />
                 Login
               </Button>
             )}
