@@ -19,6 +19,8 @@ module.exports = {
       },
       screens: {
         xs: '400px',
+        ws: { max: '612px' },
+        wm: { max: '1200px' },
       },
       colors: {
         price: '#fe434a',

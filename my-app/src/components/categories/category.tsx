@@ -39,8 +39,8 @@ export const Category = () => {
     fetch();
   }, [params]);
 
-  const changeParam = (parentId: string) => {
-    setParams({ ...params, parentId });
+  const changeParam = (id: string) => {
+    setParams({ ...params, parentId: id });
   };
 
   const backCategoryList = () => {
@@ -49,7 +49,7 @@ export const Category = () => {
     prevCategoryList.pop();
     setPrevCategoryList(prevCategoryList ?? ([] as CategoryItem[]));
   };
-  
+
   return isLoaded ? (
     <div>
       {prevCategoryList && prevCategoryList[0]?.length ? (

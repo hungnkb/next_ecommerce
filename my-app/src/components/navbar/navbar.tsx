@@ -7,6 +7,7 @@ import { UserInfoType } from '@/common/type-response';
 import { RootState } from '@/redux/store';
 import { AccountControl } from './account-control';
 import { SearchIcon } from './search-input';
+import { useRouter } from 'next/navigation';
 
 export enum menuTypeEnum {
   TEXT = 'text',
@@ -24,6 +25,7 @@ export const NavbarComponent = () => {
   const [isActive, setIsActive] = useState('');
   const [isOpenAuthModal, setIsOpenAuthModal] = useState(false);
   const authState = useSelector((state: RootState) => state.auth);
+  const route = useRouter();
   const menuList: menuType[] = [
     { title: 'Menu 1', key: 'menu1', type: menuTypeEnum.TEXT, link: '#' },
     { title: 'Menu 2', key: 'menu2', type: menuTypeEnum.TEXT, link: '#' },
@@ -46,10 +48,14 @@ export const NavbarComponent = () => {
     }
   });
 
+  const handleClickLogo = () => {
+    route.push('/');
+  };
+
   return (
     <Fragment>
       <Navbar maxWidth='2xl'>
-        <NavbarBrand>
+        <NavbarBrand onClick={handleClickLogo}>
           <p className='font-bold text-inherit'>Logo</p>
         </NavbarBrand>
         <NavbarContent className='flex gap-4 max-w-full' justify='center'>

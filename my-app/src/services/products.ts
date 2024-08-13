@@ -18,4 +18,11 @@ export class ProductService {
     });
     if (res?.data) return res.data.data || [];
   }
+
+  async getDetail(slug: string) {
+    const res = await AxiosInstance.getInstance().get(this.url + `/${slug}`, {
+      validateStatus: (status: number) => status < 500,
+    });
+    if (res?.data) return res.data.data || {};
+  }
 }

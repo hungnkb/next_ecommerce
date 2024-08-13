@@ -3,17 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { CardDetailType, CardDetail } from './card-detail';
 import { Skeleton } from '@nextui-org/skeleton';
 import { Card } from '@nextui-org/react';
-import { ProductService } from '@/services/products';
 import axios from 'axios';
 
-const skeletonList = Array(25).fill(0);
+const skeletonList = Array(24).fill(0);
 
 const CardList = () => {
   const [list, setList] = useState([] as CardDetailType[]);
   useEffect(() => {
     if (!list?.length) {
       const fetch = async () => {
-        // const productService = new ProductService();
         const res = await axios.get('/api/products');
         if (res?.data?.length) {
           setList(res.data);
@@ -25,13 +23,18 @@ const CardList = () => {
 
   return (
     <>
-      <div className='grid grid-cols-4 gap-4 max-xs:grid-cols-1'>
+      <div className='grid grid-cols-6 gap-1 max-xs:grid-cols-1'>
         {list?.length
           ? list.map((item, index) => {
               return <CardDetail key={index} props={item} />;
             })
           : skeletonList.map((_, index: number) => (
-              <Card key={index} className='w-[200px] space-y-5 p-4' radius='lg'>
+              <Card
+                key={index}
+                className='space-y-5 p-4 border-solid border-1 border-slate-200'
+                shadow='none'
+                radius='lg'
+              >
                 <Skeleton className='rounded-lg'>
                   <div className='h-24 rounded-lg bg-default-300'></div>
                 </Skeleton>

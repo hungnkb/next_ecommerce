@@ -13,10 +13,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <Providers>
       <html>
         <body>
-          <div className='absolute left-1/2 transform -translate-x-1/2 max-w-full min-w-full'>
+          <div className='absolute left-1/2 transform -translate-x-1/2 max-w-full min-w-full bg-slate-200 min-h-full'>
             <CheckAuth />
             <Layout />
-            <div className='px-6 bg-slate-100'>{children}</div>
+            <div className='px-6 '>{children}</div>
           </div>
         </body>
       </html>
