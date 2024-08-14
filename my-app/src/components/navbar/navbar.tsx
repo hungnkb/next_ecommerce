@@ -21,7 +21,7 @@ export type menuType = {
   link: string;
 };
 
-export const NavbarComponent = () => {
+export const NavbarComponent = ({ className }: { className: string }) => {
   const [isActive, setIsActive] = useState('');
   const [isOpenAuthModal, setIsOpenAuthModal] = useState(false);
   const authState = useSelector((state: RootState) => state.auth);
@@ -53,7 +53,7 @@ export const NavbarComponent = () => {
   };
 
   return (
-    <Fragment>
+    <div className={className}>
       <Navbar maxWidth='2xl'>
         <NavbarBrand onClick={handleClickLogo}>
           <p className='font-bold text-inherit'>Logo</p>
@@ -107,6 +107,6 @@ export const NavbarComponent = () => {
         </NavbarContent>
       </Navbar>
       <AuthModal isOpenAuthModal={isOpenAuthModal} />
-    </Fragment>
+    </div>
   );
 };

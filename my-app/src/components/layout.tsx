@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Layout = () => {
   return (
     <>
-      <NavbarComponent />
+      <NavbarComponent className='mb-2' />
       {/* Thông báo - alert ( góc màn hình) */}
       <ToastContainer />
     </>

@@ -13,6 +13,7 @@ export type ProductItemProps = {
   price: number;
   thumbnailId: string;
   documents: Array<{ id: string; url: string }>;
+  sold: number;
 };
 
 function Products({ params }: { params: { slug: string } }) {
@@ -35,7 +36,7 @@ function Products({ params }: { params: { slug: string } }) {
       <div className='col-start-2 col-span-1 bg-white rounded-md p-2'>
         <ProductCarousel itemList={item.documents} />
       </div>
-      <div className='flex col-start-3 col-span-2 bg-white rounded-md p-2'>
+      <div className='flex col-start-3 col-span-2'>
         <ProductMiddle item={item} />
       </div>
       <div className='col-start-5 col-span-1 bg-yellow-300 rounded-md p-2'></div>
