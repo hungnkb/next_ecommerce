@@ -1,9 +1,10 @@
 'use client';
 import { ProductCarousel } from '@/components/products/carousel';
+import ProductMiddle from '@/components/products/product_middle';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-type ProductItem = {
+export type ProductItemProps = {
   id: string;
   name: string;
   slug: string;
@@ -11,10 +12,11 @@ type ProductItem = {
   accountId: string;
   price: number;
   thumbnailId: string;
+  documents: Array<{ id: string; url: string }>;
 };
 
 function Products({ params }: { params: { slug: string } }) {
-  const [item, setItem] = useState<ProductItem>({ id: '' } as ProductItem);
+  const [item, setItem] = useState<ProductItemProps>({ id: '' } as ProductItemProps);
   const { slug } = params;
   useEffect(() => {
     const fetch = async () => {
@@ -26,15 +28,18 @@ function Products({ params }: { params: { slug: string } }) {
     };
     fetch();
   }, [slug]);
+
   return (
     <div className='grid grid-cols-6 gap-1'>
       <div className='col-start-1 col-span-1 bg-red-300 p-4 rounded-md'></div>
-      <div className='col-start-2 col-span-1 bg-blue-400 rounded-md'>
-        <ProductCarousel />
+      <div className='col-start-2 col-span-1 bg-white rounded-md p-2'>
+        <ProductCarousel itemList={item.documents} />
       </div>
-      <div className='col-start-3 col-span-2 bg-purple-300 rounded-md'></div>
-      <div className='col-start-5 col-span-1 bg-yellow-300 rounded-md'></div>
-      <div className='col-start-6 col-span-1 bg-black rounded-md'></div>
+      <div className='flex col-start-3 col-span-2 bg-white rounded-md p-2'>
+        <ProductMiddle item={item} />
+      </div>
+      <div className='col-start-5 col-span-1 bg-yellow-300 rounded-md p-2'></div>
+      <div className='col-start-6 col-span-1 bg-black rounded-md p-2'></div>
     </div>
   );
 }

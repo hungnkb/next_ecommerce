@@ -7,3 +7,42 @@ body {
   padding: 0;
   margin: 0;
 }
+
+@layer base {
+  h1 {
+    @apply text-4xl;
+    @apply font-bold;
+  }
+  h2 {
+    @apply text-3xl;
+    @apply font-bold;
+  }
+  h3 {
+    @apply text-2xl;
+    @apply font-bold;
+  }
+  h4 {
+    @apply text-xl;
+    @apply font-semibold;
+  }
+  h5 {
+    @apply text-lg;
+    @apply font-semibold;
+  }
+  h6 {
+    @apply text-sm;
+    @apply font-semibold;
+  }
+}
+
+.carousel_product .slick-arrow.slick-prev {
+  position: absolute !important;
+  left: 4px !important;
+  z-index: 1000 !important;
+}
+
+.carousel_product .slick-arrow.slick-next {
+  position: absolute !important;
+  right: 4px !important;
+  z-index: 1000 !important;
+}
