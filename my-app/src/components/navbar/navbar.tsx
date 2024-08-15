@@ -55,7 +55,7 @@ export const NavbarComponent = ({ className }: { className: string }) => {
   return (
     <div className={className}>
       <Navbar maxWidth='2xl'>
-        <NavbarBrand onClick={handleClickLogo}>
+        <NavbarBrand onClick={handleClickLogo} className='cursor-pointer'>
           <p className='font-bold text-inherit'>Logo</p>
         </NavbarBrand>
         <NavbarContent className='flex gap-4 max-w-full' justify='center'>

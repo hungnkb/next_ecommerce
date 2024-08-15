@@ -26,9 +26,11 @@ export default function ProductMiddle({ item }: { item: ProductItemProps }) {
       </div>
       <div className='bg-white rounded-md p-2 mt-2'>
         <h5>Thông tin chi tiết</h5>
-        <div className='flex flex-row'>
-          <p>Thương hiệu</p>
-          <p>Apple</p>
+        <div className='flex'>
+          <div className='grid grid-cols-2'>
+            <div className='col-start-1 col-span-1'>Thương hiệu</div>
+            <div className='col-start-2 col-span-1'>Hihihaha</div>
+          </div>
         </div>
       </div>
     </div>
