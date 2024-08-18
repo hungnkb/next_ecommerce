@@ -4,6 +4,24 @@ import ProductMiddle from '@/components/products/product_middle';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
+export type AttributesType = {
+  id: string;
+  name: string;
+  key: string;
+  accountId: string;
+};
+
+export type ProductMetadataType = {
+  id: string;
+  sku: string;
+  attributeId: string;
+  attributes: AttributesType;
+  productId: string;
+  value: string;
+  documentId: string;
+  isThumbnail: boolean;
+};
+
 export type ProductItemProps = {
   id: string;
   name: string;
@@ -14,6 +32,7 @@ export type ProductItemProps = {
   thumbnailId: string;
   documents: Array<{ id: string; url: string }>;
   sold: number;
+  productMetadata: Array<ProductMetadataType>;
 };
 
 function Products({ params }: { params: { slug: string } }) {
@@ -24,7 +43,6 @@ function Products({ params }: { params: { slug: string } }) {
       const res = await axios.get(`/api/products/${slug}`);
       if (res.data) {
         setItem(res.data);
-        console.log(111, res.data);
       }
     };
     fetch();

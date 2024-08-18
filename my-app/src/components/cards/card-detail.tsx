@@ -34,7 +34,7 @@ export const CardDetail = ({ props }: { props: CardDetailType }) => {
           {new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'USD' }).format(price)}
         </h4>
         <p className='text-tiny uppercase font-bold line-clamp-3'>{name}</p>
-        <small className='text-default-500'>Selled: </small>
+        <small className='text-default-500'>Sold: </small>
       </CardHeader>
     </Card>
   );
